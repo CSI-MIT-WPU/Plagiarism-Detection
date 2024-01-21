@@ -1,0 +1,20 @@
+{
+  "name": "webscraping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node fetch2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.4",
+    "cheerio": "^1.0.0-rc.12",
+    "p-limit": "^5.0.0",
+    "pretty": "^2.0.0",
+    "puppeteer": "^21.6.1"
+  },
+  "type":"module"
+}
