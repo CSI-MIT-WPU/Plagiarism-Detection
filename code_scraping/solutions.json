@@ -1,0 +1,173 @@
+[
+  {
+    "qid": "1",
+    "solution": [
+      {
+        "language": "java",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/4514678/60-54-easy-solution/",
+            "code": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        for i in range(len(nums)):\n            for j in range(i + 1, len(nums)):\n                if (i != j and nums[i] + nums[j] == target):\n                    return [i, j]\n        return []"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/4502497/python-solution/",
+            "code": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:  \n\n        seen = {}\n\n        for index, item in enumerate(nums):\n            seen[item] = index\n\n        for index, item in enumerate(nums):\n            n = target - item\n            if n in seen and seen[n] != index:\n                return [index, seen[n]]\n            \n            \n\n                \n\n\n"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/3715999/binbin-s-very-simple-solution-dont-understand-why-so-many-solutions-used-user-out/",
+            "code": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        pre = []\n        for i in range(len(nums)):\n            int2 = nums[i]\n            int1 = target - int2\n            if int1 not in pre:\n                pre.append(int2)\n            else:\n                return [i,pre.index(int1)]\n                \n\n\n"
+          }
+        ]
+      },
+      {
+        "language": "javascript",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/4578808/two-pointer-approach/",
+            "code": "function twoSum(nums, target) {\n    // Create an array of objects {value, index} to keep track of the original indices\n    const numsWithIndices = nums.map((num, index) => ({ value: num, index }));\n    \n    // Sort the array of objects based on the values\n    numsWithIndices.sort((a, b) => a.value - b.value);\n    \n    // Initialize two pointers\n    let left = 0;\n    let right = nums.length - 1;\n    \n    while (left < right) {\n        const currentSum = numsWithIndices[left].value + numsWithIndices[right].value;\n        \n        if (currentSum === target) {\n            // Return the original indices\n            return [numsWithIndices[left].index, numsWithIndices[right].index];\n        } else if (currentSum < target) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    // No solution found\n    return [];\n}"
+          }
+        ]
+      },
+      {
+        "language": "cpp",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/4546017/c-solution-easy-to-understand/",
+            "code": "class Solution {\npublic:\nvector<int> solve(vector<int>&nums, int target){\n    int n = nums.size();\n    map<int, int>mp;\n    for(int i=0;i<n;i++){\n        if(mp.find(target - nums[i]) != mp.end()){\n            return {mp[target - nums[i]],i};\n        }\n        mp[nums[i]] = i;\n    }\n\n    return {-1, -1};\n}\n    vector<int> twoSum(vector<int>& nums, int target) {\n        return solve(nums, target);\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/3005639/2sum4/",
+            "code": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        \n        vector<pair<int, int>> v;\n        vector<int> v2;\n        pair<int, int> p;\n        for(int i=0; i<nums.size(); i++){\n            p.first = nums[i];\n            p.second = i;\n            v.push_back(p);\n        }\n        sort(v.begin(), v.end());\n        auto it = v.begin(), it2 = v.end();\n        it2 --;\n        while(it < it2){\n            int sum = it->first + it2->first;\n            if(sum == target){\n                v2.push_back(it->second);\n                v2.push_back(it2->second);\n                return v2;\n            }\n            else if(sum < target)\n                it ++;\n            else \n                it2 --;\n        }\n            \n        return v2;\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/3005638/2sum5/",
+            "code": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        \n        vector<pair<int, int>> v;\n        vector<int> v2;\n        pair<int, int> p;\n        for(int i=0; i<nums.size(); i++){\n            p.first = nums[i];\n            p.second = i;\n            v.push_back(p);\n        }\n        sort(v.begin(), v.end());\n        auto it = v.begin(), it2 = v.end();\n        it2 --;\n        while(it < it2){\n            int sum = it->first + it2->first;\n            if(sum == target){\n                v2.push_back(it->second);\n                v2.push_back(it2->second);\n                return v2;\n            }\n            else if(sum < target)\n                it ++;\n            else \n                it2 --;\n        }\n            \n        return v2;\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/4458699/easy-unordered-map-based-solution/",
+            "code": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n      unordered_map<int,int> mp;\n        vector<int> s;\n        for(int i=0; i<nums.size(); i++){\n             if(mp.find(target-nums[i])!=mp.end()){\n                 s.push_back(mp[target-nums[i]]);\n                 s.push_back(i);\n                 return s;\n             }      \n            mp[nums[i]]=i;\n        }\n        return s;\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/4312833/easy-approach/",
+            "code": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n    unordered_map<int, int> imap;\n    \n    for (int i = 0;; ++i) {\n        auto it = imap.find(target - nums[i]);\n        \n        if (it != imap.end()) \n            return vector<int> {i, it->second};\n            \n        imap[nums[i]] = i;\n    }\n}\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/4073938/first-leetcode/",
+            "code": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n      int n = nums.size(); \n      for (int i=0; i< n-1; i++){\n        for(int j=i+1; j<n;j++)\n        {\n          if (nums[i]+nums[j]==target)\n            return {i,j};\n        }\n        }\n        return {};\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/3898109/optimized-sol-using-hashmap/",
+            "code": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        unordered_map<int,int> mp;\n\n        int n = nums.size();\n\n        vector<int> ans;\n\n        for(int i=0;i<n;i++) {\n            int curr = nums[i];\n\n            int rem = target-curr;\n\n            if(mp.find(rem) != mp.end()) {\n                ans.push_back(mp[rem]);\n                ans.push_back(i);\n                return ans;\n            }\n\n            mp[curr] = i;\n        }\n\n        return ans;\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/3806559/easy-solution-in-c/",
+            "code": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        int n=nums.size(); \n          vector<int> ans;\n         for(int i=0;i<n;i++){\n             for(int j=i+1;j<n;j++){\n                 if (nums[i]+nums[j]==target){\n                    ans.push_back(i);\n                    ans.push_back(j);\n                 }\n             }\n         }return ans;\n         }\n};"
+          }
+        ]
+      },
+      {
+        "language": "ruby",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/3947547/1-solution/",
+            "code": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        n = len(nums)\n\n        for i in range (n):\n            sec_number = target - nums[i]\n            \n            for j in range (i+1, n):\n                if sec_number == nums[j]:\n\n                    return [i,j]\n        # result_list = []\n        # sum = 0 \n        # k = 2\n        # n = len(nums)\n\n        # for i in range (k):\n        #     sum = sum + nums[i]\n\n        # if sum == target:\n        #     return [0, 1]\n\n        # else:\n        #     for i in range (k, n):\n        #         sum = sum + nums[i] - nums[i-k]\n        #         if sum == target:\n        #             result_list.append(i-1)\n        #             result_list.append(i)\n        #             return result_list\n"
+          },
+          {
+            "url": "https://leetcode.com/problems/two-sum/solutions/4493451/o-n-solution-in-python-using-a-dictionnary/",
+            "code": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        dict = {}\n        i = 0\n        for val in  nums:   \n            if (target - val) in dict :\n                return [dict[target-val], i]\n                \n            else :\n                dict [val] = i\n                i+=1\n        return [0,0]\n            \n#example [nums, target, dictionnary] : [8,1,9,2,3] ,5, {}\n#5-8 = -3 not in dict\n#so dict [8] = 0\n#[8,1,9,2,3], 5, {8 : 0}\n#5-1 = 4 not in dict so dict [1] = 1 \n#[0,1,2,3], 5, {8 : 0, 1:1}\n#5-9 = -4 not in dict so dict [9] = 2\n#[0,1,2,3], 5, {0 : 0, 1 : 1, 9 : 2}\n#5-2 = 3 not in dict  so dict [2] = 3\n#5-3 = 2 in dict so return [i,dict[target-val]]       "
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "qid": "2",
+    "solution": [
+      {
+        "language": "csharp",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/4492711/simple-java-solution/",
+            "code": "/**\n * Definition for singly-linked list.\n * public class ListNode {\n *     int val;\n *     ListNode next;\n *     ListNode() {}\n *     ListNode(int val) { this.val = val; }\n *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }\n * }\n */\nclass Solution {\n    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        return rec(l1, l2);\n    }\n\n    public ListNode rec(ListNode l1, ListNode l2) {\n        if (l1 == null && l2 == null) return null;\n        if (l1 == null) l1 = new ListNode(0);\n        if (l2 == null) l2 = new ListNode(0);\n        int value = l1.val + l2.val;\n        if (value > 9) {\n            value %= 10;\n            if (l1.next == null) l1.next = new ListNode(1);\n            else l1.next.val = l1.next.val + 1;\n        }\n        \n        return new ListNode(value, rec(l1.next, l2.next));\n    }\n}"
+          }
+        ]
+      },
+      {
+        "language": "java",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/4516556/fast-and-simple-solution-with-description/",
+            "code": "/**\n * Definition for singly-linked list.\n * public class ListNode {\n *     int val;\n *     ListNode next;\n *     ListNode() {}\n *     ListNode(int val) { this.val = val; }\n *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }\n * }\n */\nclass Solution {\n    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode res = new ListNode(-1);\n        ListNode head = res;\n        int tens = 0;\n\n        while (l1 != null || l2 != null) {\n            int val1 = l1 != null ? l1.val : 0;\n            int val2 = l2 != null ? l2.val : 0;\n            res.next = new ListNode((tens + val1 + val2) % 10);\n            tens = (tens + val1 + val2) / 10;\n            res = res.next;\n            l1 = l1 != null ? l1.next : null;\n            l2 = l2 != null ? l2.next : null;\n        }\n        \n        if (l1 == null && l2 == null) {\n            if (tens != 0) {\n                res.next = new ListNode(tens);\n            }\n        }\n\n        return head.next;\n    }\n}"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/3565662/easy-solution-with-99-5-beats/",
+            "code": "/**\n * Definition for singly-linked list.\n * public class ListNode {\n *     int val;\n *     ListNode next;\n *     ListNode() {}\n *     ListNode(int val) { this.val = val; }\n *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }\n * }\n */\nclass Solution {\n    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode ans = new ListNode(0);\n        ListNode curr = ans; \n        int m = 0;\n\n        while(l1 != null && l2 != null){\n            m = l1.val + l2.val + m/10;\n            if(m>=10){\n                curr.next = new ListNode(m%10);\n                curr = curr.next;\n                l1 = l1.next;\n                l2 = l2.next;\n            }else{\n                curr.next = new ListNode(m);\n                curr = curr.next;\n                l1 = l1.next;\n                l2 = l2.next;\n                m = 0;\n\n            }\n        }\n\n        while(l1 != null ){\n            m = l1.val + m/10;\n            if(m>=10){\n                curr.next = new ListNode(m%10);\n                curr = curr.next;\n                l1 = l1.next;\n            }else{\n                curr.next = new ListNode(m);\n                curr = curr.next;\n                l1 = l1.next;\n                m = 0;\n\n            }\n        }\n\n        while(l2 != null){\n            m = l2.val + m/10;\n            if(m>=10){\n                curr.next = new ListNode(m%10);\n                curr = curr.next;\n                l2 = l2.next;\n            }else{\n                curr.next = new ListNode(m);\n                curr = curr.next;\n                l2 = l2.next;\n                m = 0;\n\n            }\n        }\n\n\n        if(m>0){\n            curr.next = new ListNode(m/10);\n            curr = curr.next; \n        }\n\n        return ans.next;\n    }\n}"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/3774001/this-is-my-solution-using-while-loop/",
+            "code": "\n // Definition for singly-linked list.\n  /*public class ListNode {\n      int val;\n      ListNode next;\n      ListNode() {}\n      ListNode(int val) { this.val = val; }\n      ListNode(int val, ListNode next) { this.val = val; this.next = next; }\n  }*/\n \nclass Solution {\n    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode finalNode = null;\n        Integer remainder = 0;\n        Integer division = 0;\n        Integer total = 0;\n       \n        List<Integer> firstArray = new ArrayList();\n        while(l1 != null || l2  != null || division > 0 )\n        {\n            \n            int firstValue = 0;\n            int secondValue = 0;\n           \n            if(l1 != null){\n                firstValue = l1.val;\n            }\n\n            if(l2 != null){\n               secondValue = l2.val;\n            }\n\n            total = firstValue + secondValue + division;\n\n            if(total < 10) {\n        \n            if(finalNode == null)\n            {\n               finalNode = new ListNode(total);\n            } else {\n                ListNode temp = finalNode;\n                while(temp != null && temp.next != null)\n               {\n                   temp = temp.next;\n               }\n        \n                temp.next = new ListNode(total);\n            }\n             division = 0;\n            } \n            else\n            {\n            remainder = total % 10;\n            division  = total / 10;\n            if(finalNode == null)\n            {\n               finalNode = new ListNode(remainder);\n            } else {\n                ListNode temp = finalNode;\n                while(temp != null && temp.next != null)\n               {\n                   temp = temp.next;\n               }\n        \n                temp.next = new ListNode(remainder);\n            }\n            }\n             if(l1 != null){\n                 l1 = l1.next;\n            }\n            if(l2 != null){\n                l2 = l2.next;\n            }\n        }\n\n        return finalNode;\n    }\n}"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/4309866/java-easy-solution/",
+            "code": "class Solution {\n    public ListNode addTwoNumbers(ListNode list1, ListNode list2) {\n        ListNode dummyHead = new ListNode(0);\n        ListNode result = dummyHead;\n        int sum = 0, carry = 0;\n        \n        while (list1 != null || list2 != null) {\n            sum = 0;\n            \n            if (list1 != null) {\n                sum += list1.val;\n                list1 = list1.next;\n            }\n            \n            if (list2 != null) {\n                sum += list2.val;\n                list2 = list2.next;\n            }\n            \n            if (carry != 0) {\n                sum += carry;\n            }\n            \n            if (sum / 10 != 0) {\n                ListNode newNode = new ListNode(sum % 10);\n                result.next = newNode;\n                carry = sum / 10;\n                result = newNode;\n            } else {\n                ListNode newNode = new ListNode(sum);\n                result.next = newNode;\n                carry = 0;\n                result = newNode;\n            }\n        }\n        \n        if (carry != 0) {\n            ListNode newNode = new ListNode(carry);\n            result.next = newNode;\n            result = newNode;\n        }\n        \n        return dummyHead.next;\n    }\n}\n"
+          }
+        ]
+      },
+      {
+        "language": "cpp",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/4458702/carry-method-addition-in-list/",
+            "code": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n        ListNode* temp=new ListNode(0);\n        ListNode* temp2=temp;\n        int carry=0;\n        while(l1!=NULL || l2!=NULL || carry!=0){\n          int x=l1?l1->val:0;\n          int y=l2?l2->val:0;\n          int sum=x+y+carry;\n          carry=sum/10;\n          temp2->next=new ListNode(sum%10);\n          temp2=temp2->next;\n          l1=l1?l1->next:nullptr;\n          l2=l2?l2->next:nullptr; \n        }\n        return temp->next;\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/4298204/c-simple-solution-which-beats-99-user-s-solution/",
+            "code": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\n\nclass Solution {\npublic:\n//NO need of reverse function in this approach\n    ListNode* reverse(ListNode* head) {\n        if (head == NULL || head->next == NULL) {\n            return head;\n        }\n        ListNode* prev = NULL;\n        ListNode* curr = head;\n        while (curr) {\n            ListNode* nex = curr->next;\n            curr->next = prev;\n            prev = curr;\n            curr = nex;\n        }\n        return prev;\n    }\n\n    int getLength(ListNode* head) {\n        if (head == NULL) {\n            return 0;\n        }\n        ListNode* temp = head;\n        int ans = 0;\n        while (temp) {\n            ans++;\n            temp = temp->next;\n        }\n        return ans;\n    }\nListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n    if (l1 == nullptr) {\n        return l2;\n    }\n    if (l2 == nullptr) {\n        return l1;\n    }\n    int a = getLength(l1);\n    int b = getLength(l2);\n    if (a < b) {\n        swap(l1, l2);\n    }\n    ListNode* l = l1;\n    int carry = 0;\n    while (l2 != nullptr) {\n        int sum = l1->val + l2->val + carry;\n        l1->val = sum % 10;\n        carry = sum / 10;\n        if (l1->next == nullptr && (l2->next != nullptr || carry != 0)) {\n            l1->next = new ListNode(0);\n        }\n        l1 = l1->next;\n        l2 = l2->next;\n    }\n    while (l1 != nullptr && carry != 0) {\n        int sum = l1->val + carry;\n        l1->val = sum % 10;\n        carry = sum / 10;\n\n        if (l1->next == nullptr && carry != 0) {\n            l1->next = new ListNode(carry);\n            break;\n        }\n\n        l1 = l1->next;\n    }\n    if (carry != 0) {\n        l1->next = new ListNode(carry);\n    }\n    // return reverse(l);\n    return (l);\n}\n};\n"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/2911779/c-easiest-self-explanatory-code-beginner-friendly/",
+            "code": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    void insertAtTail(ListNode* &head, ListNode* &tail, int val) {\n        \n        ListNode* temp = new ListNode(val);\n        if(head == NULL) {\n            head = temp;\n            tail = temp;\n            return;\n        }\n        else\n        {\n            tail -> next = temp;\n            tail = temp;\n        }\n    }\n    ListNode* add(ListNode* l1,ListNode* l2)\n    {\n        int carry=0;\n        ListNode* head=NULL;\n        ListNode* tail=NULL;\n\n        while(l1!=NULL || l2!=NULL || carry!=0 )\n        {\n            int a=0;\n            if(l1!=NULL)\n            a=l1->val;\n            int b=0;\n            if(l2!=NULL)\n            b=l2->val;\n            int sum=carry+a+b;\n            int digit=sum%10;\n            insertAtTail(head,tail,digit);\n              carry = sum/10;\n            if(l1 != NULL)\n                l1 = l1 -> next;\n            \n            if(l2 != NULL)\n                l2 = l2 -> next;\n        }\n        return head;\n        }\n\n  \n    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n        ListNode*ans=add(l1,l2);\n        return ans;\n\n    }\n    \n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/3072288/easy-and-understandable-c-solution/",
+            "code": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    void insertAtTail(ListNode *&head, ListNode *&tail, int d){\n        ListNode *temp = new ListNode(d);\n        if(head==NULL){\n            head = temp;\n            tail = temp;\n        }\n        else{\n            tail->next = temp;\n            tail = temp;\n        }\n        return;\n    }\n\n    ListNode *add(ListNode *a, ListNode *b){\n        int carry = 0;\n        ListNode *ansHead = NULL;\n        ListNode *ansTail = NULL;\n\n        while(a!=NULL || b!=NULL || carry!=0){\n            int val1 = 0;\n            if(a!=NULL) val1 = a->val;\n            int val2 = 0;\n            if(b!=NULL) val2 = b->val;\n\n            int sum = carry + val1 + val2;\n            int digit = sum%10;\n            insertAtTail(ansHead, ansTail, digit);\n            carry = sum/10;\n\n            if(a!=NULL) a = a->next;\n            if(b!=NULL) b = b->next;\n        }\n        return ansHead;\n    }\n\n    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n        ListNode *ans = add(l1,l2);\n        return ans;\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/4044026/c-solution-easy-to-understand/",
+            "code": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n        ListNode* dummy = new ListNode();\n        ListNode* temp = dummy;\n        int carry = 0;\n\n        while(l1!=NULL || l2!= NULL || carry){\n          int sum = 0;\n\n          if(l1!=NULL){\n            sum+=l1->val;\n            l1 = l1->next;\n          }\n\n          if(l2!=NULL){\n            sum+=l2->val;\n            l2 = l2->next;\n          }\n\n          sum+=carry;\n          carry = sum/10;\n          ListNode *node =new ListNode(sum%10);\n          temp->next = node;\n          temp = temp->next;\n        }\n        return dummy->next;\n    }\n};"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/3396082/easy-to-understand-c/",
+            "code": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode() : val(0), next(nullptr) {}\n *     ListNode(int x) : val(x), next(nullptr) {}\n *     ListNode(int x, ListNode *next) : val(x), next(next) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n      ListNode d(0);\n      ListNode*ans=&d;\n      int c=0;\n      while(l1 || l2 || c){\n          if(l1!=NULL){\n              c+=l1->val;\n              l1=l1->next;\n          }\n          if(l2!=NULL){\n              c+=l2->val;\n              l2=l2->next;\n          }\n       ans->next=new ListNode(c%10);\n       c/=10;\n       ans=ans->next;\n      }  \n   return d.next; }\n\n};\n "
+          }
+        ]
+      },
+      {
+        "language": "kotlin",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/3989006/python-code-for-beginners-full-recursion/",
+            "code": "\nclass Solution:\n    def helper(self,l1,l2,carry):\n        if not l1 and not l2:\n            if carry > 0:\n                return ListNode(carry)\n            return None\n        \n        if l1 and not l2:\n            val = (l1.val+carry)\n            carry = val//10\n            head = ListNode(val%10)\n            head.next = self.helper(l1.next,l2,carry)\n            return head\n\n        if l2 and not l1:\n            val = (l2.val+carry)\n            carry = val//10\n            head = ListNode(val%10)\n            head.next = self.helper(l1,l2.next,carry)\n            return head\n            \n        val = (l1.val+l2.val+carry)\n        carry = val//10\n        head = ListNode(val%10)\n        head.next = self.helper(l1.next,l2.next,carry)\n        return head\n\n    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:\n        return self.helper(l1,l2,0)"
+          }
+        ]
+      },
+      {
+        "language": "python",
+        "data": [
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/3561066/easy-java-solution-beats-99-3/",
+            "code": "/**\n * Definition for singly-linked list.\n * public class ListNode {\n *     int val;\n *     ListNode next;\n *     ListNode() {}\n *     ListNode(int val) { this.val = val; }\n *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }\n * }\n */\nclass Solution {\n    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode temp1 = l1;\n        ListNode temp2 = l2;\n        int sum = temp1.val+temp2.val;\n        int carry=0;\n        ListNode ansTemp = new ListNode((sum%10) + carry);\n        if(sum>9) {\n            carry=1;\n        }\n        temp1 = temp1.next;\n        temp2 = temp2.next;\n        ListNode ans = ansTemp;\n        while(temp1 != null && temp2 != null) {\n            sum = temp1.val+temp2.val+carry;\n            ansTemp.next = new ListNode(sum%10);\n\n            if(carry==1) {\n                carry=0;\n            }\n\n            if(sum>9) {\n                carry=1;\n            }\n\n            temp1 = temp1.next;\n            temp2 = temp2.next;\n            ansTemp = ansTemp.next;\n        }\n\n        while(temp1 != null) {\n            sum=temp1.val+carry;\n            ansTemp.next = new ListNode((sum)%10);\n\n            if(carry==1) {\n                carry=0;\n            }\n\n            if(sum>9) {\n                carry=1;\n            }\n\n            temp1 = temp1.next;\n            ansTemp = ansTemp.next;\n        }\n\n        while(temp2 != null) {\n            sum=temp2.val+carry;\n            ansTemp.next = new ListNode(sum%10);\n\n            if(carry==1) {\n                carry=0;\n            }\n\n            if(sum>9) {\n                carry=1;\n            }\n\n            temp2 = temp2.next;\n            ansTemp = ansTemp.next;\n        }\n\n        if(carry==1) {\n            ansTemp.next = new ListNode(1);\n        }\n\n        return ans;\n    }\n}"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/4339967/java-beats-100/",
+            "code": "    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode result = new ListNode();\n        ListNode head = result;\n\n        int carry = 0;\n        int sum;\n\n        while (l1 != null && l2 != null) {\n            sum = l1.val + l2.val + carry;\n            carry = sum / 10;\n            result.next = new ListNode(sum % 10);\n            result = result.next;\n\n            l1 = l1.next;\n            l2 = l2.next;\n        }\n\n        while (l1 != null) {\n            sum = l1.val + carry;\n            carry = sum / 10;\n            result.next = new ListNode(sum % 10);\n            result = result.next;\n\n            l1 = l1.next;\n        }\n\n        while (l2 != null) {\n            sum = l2.val + carry;\n            carry = sum / 10;\n            result.next = new ListNode(sum % 10);\n            result = result.next;\n\n            l2 = l2.next;\n        }\n\n        if (carry == 1) {\n            result.next = new ListNode(1);\n        }\n\n        return head.next;\n    }"
+          },
+          {
+            "url": "https://leetcode.com/problems/add-two-numbers/solutions/4479719/soution-n-0-time-complexity-100-beats/",
+            "code": "/**\n * Definition for singly-linked list.\n * public class ListNode {\n *     int val;\n *     ListNode next;\n *     ListNode() {}\n *     ListNode(int val) { this.val = val; }\n *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }\n * }\n */\nclass Solution {\n    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n        ListNode res = new ListNode(0);\n        ListNode ptr = res;\n        int cry = 0;\n        while(l1!=null||l2!=null){\n            int sum = 0+cry;\n            if(l1!=null){\n                sum+=l1.val;\n                l1=l1.next;\n            }\n            if(l2!=null){\n                sum+=l2.val;\n                l2=l2.next;\n            }\n            cry=sum/10;\n            sum=sum%10;\n            ptr.next=new ListNode(sum);\n            ptr=ptr.next;\n        }\n        if(cry==1){\n            ptr.next=new ListNode(1);\n        }\n        return res.next;\n    }\n}"
+          }
+        ]
+      }
+    ]
+  }
+]
