@@ -31,7 +31,7 @@ async function getCode(urlLink) {
           break;
         }
       
-      } while (false);
+      } while (true);
     }
 
   
