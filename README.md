@@ -36,6 +36,26 @@ There are 2 main part to this project: <br>1. The similarity Checker <br>2. The 
 - Finally, it returns the percentage similarity between the two documents.
 
 #### The Data Pipeline:
+**Initialization:**
+- lang: A list containing regular expressions representing programming languages.
+- question_numbers: A list of question numbers.
+- curr_qn: The current question number being iterated over.
+
+**Loop Iteration:**
+- The script iterates over each question number in the question_numbers list.
+- Inside the loop, it iterates over each language in the lang list.
+
+**Database Query:**
+- For each combination of language and question number, it queries a database collection (sub_col) to retrieve submissions that match both the language and question number criteria.
+- It extracts email addresses and corresponding code submissions from the retrieved documents and stores them in separate lists.
+
+**Similarity Calculation:**
+- It initializes a similarity matrix with zeros, with dimensions based on the number of submissions retrieved.
+- It iterates through each pair of submissions and calculates the similarity between their codes using the winnowing_fingerprint function to generate fingerprints and the check_similarity function to compute the Jaccard similarity.
+- The resulting similarity values are stored in the similarity matrix.
+
+**Output:**
+- Finally, it prints the similarity matrix along with the language and question number for which it was calculated.
 
 
 
